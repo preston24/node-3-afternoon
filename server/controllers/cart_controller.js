@@ -2,8 +2,10 @@ const swag = require('../models/swag');
 
 module.exports = {
   add: (req, res, next) => {
-    const {id} = req.query;
+    let {id} = req.query;
     let {cart} = req.session.user;
+
+    id = Number(id);
 
     const index = cart.findIndex(swag => swag.id === id);
 
